@@ -1,0 +1,23 @@
+services:
+  spark-jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spark-jupyter:latest
+    container_name: spark-jupyter
+    ports:
+      - "8888:8888" # Jupyter Notebook
+      - "8880:8880" # Spark Master UI
+      - "7077:7077" # Spark Master port
+      - "4040:4040" # Spark Application UI
+    volumes:
+      - ./notebooks:/opt/notebooks # Mount local directory for notebooks
+      - ./data:/opt/data
+      - ./output:/opt/output
+    environment:
+      - SPARK_MODE=master
+      - SPARK_MASTER_HOST=spark-jupyter
+      - SPARK_MASTER_PORT=7077
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
