@@ -20,7 +20,7 @@ RUN pip3 install \
     jupyterlab \
     pyspark==3.5.3 \
     kafka-python==2.0.2 \
-    delta-spark==3.3.0 \
+    delta-spark==3.2.0 \
     boto3 \
     pandas \
     pyarrow \
