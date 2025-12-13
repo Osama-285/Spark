@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     image: spark-jupyter:latest
     container_name: spark-jupyter
+    networks:
+      - main-bridge
     ports:
       - "8888:8888" # Jupyter Notebook
       - "8880:8880" # Spark Master UI
@@ -21,3 +23,7 @@ services:
     dns:
       - 8.8.8.8
       - 8.8.4.4
+      
+networks:
+  main-bridge:
+    external: true
